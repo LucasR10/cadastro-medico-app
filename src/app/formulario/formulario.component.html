@@ -1,0 +1,49 @@
+<form #frm="ngForm" (ngSubmit)="cadastraUsuario( frm )" autocomplete="off" >
+<div class="container">
+<div class="alert alert-success col-mod-12 formulario">
+ {{medico.nome}}
+	<div class="form-group">
+		<label for="exampleInputPassword1"> <strong>Primeiro Nome</strong> </label> 
+		<input   type="text" class="form-control" id="PrimeiroNome" 
+			placeholder="Primeiro Nome"  >
+	</div>
+	
+		<div class="form-group">
+		<label for="Segundonome"><strong> Segundo Nome </strong></label> <input 
+			type="text" class="form-control" id="exampleInputPassword1"
+			placeholder=" Segundo nome"  >
+	</div>
+
+	<div class="form-group">
+		<label for="exampleInputEmail1"><strong> Email </strong> </label> <input 
+			type="email" class="form-control" id="exampleInputEmail1"
+			aria-describedby="emailHelp" placeholder="Entre com uma  email" > 
+	</div>
+
+
+	<div class="form-group">
+		<label for="exampleSelect1"><strong> Sexo </strong></label> <select class="form-control"
+			id="exampleSelect1">
+			<option>Masculino</option>
+			<option>Ferminino</option>
+
+		</select>
+	</div>
+
+	<div class="form-check">
+		<label class="form-check-label"> <input type="checkbox"
+			class="form-check-input"> <strong> Oculpado </strong>
+		</label>
+	</div>
+	
+	<div class="form-check">
+		<label class="form-check-label"> <input type="checkbox"
+			class="form-check-input"> <strong> Ativo </strong>
+		</label>
+	</div>
+	<button  type="submit"  class="btn btn-primary"  >Cadastrar</button>
+	<button type="submit" class="btn btn-primary"> Voltar </button>
+	
+	</div>
+	</div>
+</form>
