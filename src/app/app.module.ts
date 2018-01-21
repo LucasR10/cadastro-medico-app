@@ -8,10 +8,12 @@ import { AppComponent } from './app.component';
 import { rotas } from './app.rotas';
 import { MenuComponent } from './menu/menu.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { MedicoService } from './medico.service';
+import { ConfigService } from './service/config.service';
+import { MedicoService } from './service/medico.service';
 import { TabelaComponent } from './tabela/tabela.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -24,7 +26,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule, rotas, FormsModule, HttpClientModule
   ],
-  providers: [ MedicoService],
+  providers: [ MedicoService, ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

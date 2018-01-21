@@ -1,4 +1,4 @@
-import { MedicoService } from '../medico.service';
+import { MedicoService } from '../service/medico.service';
 import { Component, OnInit } from '@angular/core';
 import { Medico } from './app.medico';
 import { FormControl } from '@angular/forms';
@@ -11,16 +11,19 @@ import { FormControl } from '@angular/forms';
 export class FormularioComponent implements OnInit {
 
   medico: Medico = new Medico();
-  medicoService: MedicoService;
   
-  constructor() { }
+  
+  
+  constructor(private  medicoService: MedicoService ) { }
 
   ngOnInit() {
   }
 
   cadastraUsuario(frm: FormControl) {
-    this.medicoService.adicionar(frm.value);
-    console.log(frm.value );
+     this.medicoService.adicionar(frm.value);
+     console.log(frm.value );
   }
+  
+
 
 }
