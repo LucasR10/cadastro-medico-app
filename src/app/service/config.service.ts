@@ -1,20 +1,18 @@
 import {Injectable} from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
+
 
 @Injectable()
 export class ConfigService {
+ 
+ urlService: string;
+ params = 'params'; 
+ private parametroUrl: any;
 
-   urlService: string;
-   SERVICES_URI = 'http://localhost:8090';
-
-  constructor(private rotas: Routes) {
-    this.urlService = this.SERVICES_URI;
+  constructor(private rotas: Router , private rotaAtiva: ActivatedRoute ) {
+    this.urlService = 'http://localhost:4300';
   }
 
-
-  logDebug(msg: string) {
-    console.log(msg);
-  }
 
   decodeBase64(value: string) {
     return atob(value);
@@ -24,6 +22,15 @@ export class ConfigService {
     return btoa(value);
   }
 
+  redirecionarComParametro(rotaName: any, valorParam: any) {
+    this.rotas.navigate([rotaName], {queryParams: {params: this.encodeBase64(valorParam)}});
+  }
 
-  
+
+  pegarParametroUrl() {
+    this.rotaAtiva.queryParams.subscribe( ( parametro: any ) => { this.parametroUrl = parametro['params'] });
+    return this.parametroUrl;
+  }
+
+
 }

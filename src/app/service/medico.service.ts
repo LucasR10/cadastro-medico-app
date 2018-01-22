@@ -1,3 +1,4 @@
+import { Medico } from '../formulario/app.medico';
 import { ConfigService } from './config.service';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
@@ -9,12 +10,13 @@ export class MedicoService {
   private urlService: string;
  
 
-  constructor(private http: HttpClient ) {
-    this.urlService = 'http://localhost:8090';
+  constructor(private http: HttpClient , private config: ConfigService ) {
+    this.urlService = config.urlService;
   }
 
   adicionar(medico: any) {
-    this.http.post(this.urlService + '/adicionar', medico);
+    console.log( this.urlService + '/adicionar', medico );
+    this.http.post(this.urlService + '/adicionar', medico).subscribe();
   }
 
   atualizar(medico: any) {
@@ -22,20 +24,21 @@ export class MedicoService {
   }
 
   deletar(codigo: number) {
-    console.log( this.urlService + '/deletar/' + codigo  );
-      this.http.delete(this.urlService + '/deletar/' + codigo ); 
+      this.http.delete(this.urlService + '/deletar/' + codigo ).subscribe(); 
   }
 
   listar() {
-    return this.http.get<any[]>(this.urlService + '/listar');
+   return this.http.get<any[]>(this.urlService + '/listar');
   }
 
   buscar(codigo: string) {
-    return this.http.get<any[]>(this.urlService + '/listar/' + codigo);
+    return this.http.get<any>(this.urlService + '/listar/' + this.config.decodeBase64(codigo));
   }
   
-
-
+  pegarParametro() {
+    return this.config.pegarParametroUrl();
+  }
+  
 }
 
 

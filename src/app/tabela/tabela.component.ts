@@ -1,8 +1,7 @@
-import { Medico } from '../formulario/app.medico';
-import { MedicoService } from '../service/medico.service';
-import { ConfigService } from '../service/config.service';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Medico} from '../formulario/app.medico';
+import {MedicoService} from '../service/medico.service';
+import {ConfigService} from '../service/config.service';
+import {Component, OnInit} from '@angular/core';
 
 
 
@@ -13,25 +12,29 @@ import { Router } from '@angular/router';
 })
 export class TabelaComponent implements OnInit {
 
-   medicos = [];
+  medicos = [];
 
-  constructor(private medicoService: MedicoService, private rotas: Router  ) {
+  constructor(private medicoService: MedicoService, private config: ConfigService) {
 
   }
 
   ngOnInit() {
-     this.medicoService.listar().subscribe( dados => this.medicos = dados);
-     console.log ( this.medicos.values );
+    this.listar();
   }
-  
-  deletar(codigo: number) {
-    this.medicoService.deletar( codigo );
+
+  deletar(medico: any) {
+    this.medicoService.deletar(medico.codigo);
+    this.medicos.splice(this.medicos.indexOf(medico), 1);
   }
-  
-  
- atualizar(codigo: number) {
-     this.rotas.navigate(['/cadastro'], {queryParams: {'codigo' :  codigo } } );
+
+
+  atualizar(codigo: any) {
+    this.config.redirecionarComParametro('cadastro', codigo);
   }
-  
+
+  listar() {
+    this.medicoService.listar().subscribe(retorno => this.medicos = retorno);
+  }
+
 
 }

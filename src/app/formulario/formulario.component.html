@@ -1,49 +1,74 @@
-<form #frm="ngForm" (ngSubmit)="cadastraUsuario( frm )" autocomplete="off" >
+<form #frm="ngForm" (ngSubmit)="cadastra( frm )" autocomplete="off" name="formulario" >
 <div class="container">
+
+<div  class="alert alert-info margin-20 " role="alert" [ngClass]="{'display-none':msg == null}">
+    <strong>{{msg}}</strong> 
+</div>
+ <input [(ngModel)]="medico.codigo"  type="hidden"   id="codigo" name="codigo"/>
 <div class="alert alert-success col-mod-12 formulario">
- {{medico.nome}}
+    
 	<div class="form-group">
 		<label for="exampleInputPassword1"> <strong>Primeiro Nome</strong> </label> 
-		<input   type="text" class="form-control" id="PrimeiroNome" 
+		<input [(ngModel)]="medico.nome"  type="text" class="form-control" id="PrimeiroNome" name="nome"
 			placeholder="Primeiro Nome"  >
 	</div>
 	
 		<div class="form-group">
-		<label for="Segundonome"><strong> Segundo Nome </strong></label> <input 
-			type="text" class="form-control" id="exampleInputPassword1"
+		<label for="Segundonome"><strong> Segundo Nome </strong></label> 
+		<input  [(ngModel)]="medico.ultimoNome" type="text" class="form-control" id="exampleInputPassword1" name="ultimoNome"
 			placeholder=" Segundo nome"  >
 	</div>
 
 	<div class="form-group">
-		<label for="exampleInputEmail1"><strong> Email </strong> </label> <input 
-			type="email" class="form-control" id="exampleInputEmail1"
+		<label for="exampleInputEmail1"><strong> Email </strong> </label> 
+		<input [(ngModel)]="medico.email" type="email" class="form-control" id="exampleInputEmail1" name="email"
 			aria-describedby="emailHelp" placeholder="Entre com uma  email" > 
 	</div>
 
-
 	<div class="form-group">
-		<label for="exampleSelect1"><strong> Sexo </strong></label> <select class="form-control"
-			id="exampleSelect1">
-			<option>Masculino</option>
-			<option>Ferminino</option>
-
+		<label for="sexoselec"><strong> Sexo </strong></label> 
+		<select #selecionarSexo class="form-control" id="sexoselec"  (ngModel)="medico.sexo" name="sexo" >
+		    <option  [disabled]="true">Selecione.....</option>
+			<option *ngFor="let s of sexo" [value]="s.sexo" (ngModel)="medico.sexo"  >
+			   {{s.label}}
+			</option>
+			
+		</select>
+	</div>
+	
+  <div class="form-group">
+		<label for="espe"><strong> Especialidade </strong></label> 
+		<select #selecionarEspecialidade class="form-control" id="espe"  (ngModel)="medico.especialidade" name="especialidade" >
+		    <option  [disabled]="true">Selecione.....</option>
+			<option *ngFor="let es of especialidades" [value]="es.codigo" (ngModel)="medico.sexo"  >
+			   {{es.label}}
+			</option>
+			
 		</select>
 	</div>
 
 	<div class="form-check">
-		<label class="form-check-label"> <input type="checkbox"
-			class="form-check-input"> <strong> Oculpado </strong>
+		<label class="form-check-label">
+		 
+		<input type="checkbox" class="form-check-input" [(ngModel)]="medico.oculpado"  name="oculpado"> 
+		<strong> Oculpado </strong>
 		</label>
 	</div>
-	
+
 	<div class="form-check">
-		<label class="form-check-label"> <input type="checkbox"
-			class="form-check-input"> <strong> Ativo </strong>
-		</label>
+		<strong> Ativo </strong> <br>
+		<label class="form-check-label"> </label>
+		<input type="radio" class="form-check-input" value="true" name="ativo" [(ngModel)]="medico.ativo">
+        <strong> Sim </strong>
+		
+		<label class="form-check-label"> </label>
+		<input type="radio" class="form-check-input" value="false" name="ativo"  [(ngModel)]="medico.ativo">
+        <strong> Nao </strong>
+		
 	</div>
-	<button  type="submit"  class="btn btn-primary"  >Cadastrar</button>
-	<button type="submit" class="btn btn-primary"> Voltar </button>
+		 <button  type="submit" class="btn btn-primary"  >Cadastrar</button>
+		 <button routerLink="/listar" type="button" class="btn btn-defualt"  > Voltar </button>
+	</div>
 	
-	</div>
 	</div>
 </form>

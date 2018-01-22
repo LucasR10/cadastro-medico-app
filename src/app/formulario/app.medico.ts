@@ -5,7 +5,9 @@ export class Medico {
     ultimoNome: string;
     email: string;
     sexo: string;
-    oculpado: string;
-    ativo: string;
+    especialidade: string;
+    oculpado: boolean;
+    ativo: boolean;
+  
 
 }
