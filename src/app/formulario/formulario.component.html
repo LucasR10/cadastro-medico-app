@@ -24,24 +24,22 @@
 		<input [(ngModel)]="medico.email" type="email" class="form-control" id="exampleInputEmail1" name="email"
 			aria-describedby="emailHelp" placeholder="Entre com uma  email" > 
 	</div>
-
+{{medico.sexo}}
 	<div class="form-group">
 		<label for="sexoselec"><strong> Sexo </strong></label> 
-		<select #selecionarSexo class="form-control" id="sexoselec"  (ngModel)="medico.sexo" name="sexo" >
-		    <option  [disabled]="true">Selecione.....</option>
+		<select #selecionarSexo class="form-control" id="sexoselec"  name="sexo" [(ngModel)]="medico.sexo" >
 			<option *ngFor="let s of sexo" [value]="s.sexo" (ngModel)="medico.sexo"  >
 			   {{s.label}}
 			</option>
 			
 		</select>
 	</div>
-	
+	{{medico.especialidade}}
   <div class="form-group">
 		<label for="espe"><strong> Especialidade </strong></label> 
-		<select #selecionarEspecialidade class="form-control" id="espe"  (ngModel)="medico.especialidade" name="especialidade" >
-		    <option  [disabled]="true">Selecione.....</option>
-			<option *ngFor="let es of especialidades" [value]="es.codigo" (ngModel)="medico.sexo"  >
-			   {{es.label}}
+		<select #selecionarEspecialidade class="form-control" id="espe"  name="especialidade" [(ngModel)]="medico.especialidade"  >
+			<option *ngFor="let m of especialidades" [value]="m.codigo" (ngModel)="medico.especialidade"    >
+			   {{m.label}}
 			</option>
 			
 		</select>
@@ -50,7 +48,7 @@
 	<div class="form-check">
 		<label class="form-check-label">
 		 
-		<input type="checkbox" class="form-check-input" [(ngModel)]="medico.oculpado"  name="oculpado"> 
+		<input type="checkbox" class="form-check-input" [(ngModel)]="medico.oculpado" [value]="medico.oculpado"  name="oculpado"> 
 		<strong> Oculpado </strong>
 		</label>
 	</div>
@@ -58,11 +56,11 @@
 	<div class="form-check">
 		<strong> Ativo </strong> <br>
 		<label class="form-check-label"> </label>
-		<input type="radio" class="form-check-input" value="true" name="ativo" [(ngModel)]="medico.ativo">
+		<input type="radio" class="form-check-input" value="true" name="ativo" [(ngModel)]="medico.ativo" >
         <strong> Sim </strong>
 		
 		<label class="form-check-label"> </label>
-		<input type="radio" class="form-check-input" value="false" name="ativo"  [(ngModel)]="medico.ativo">
+		<input type="radio" class="form-check-input" value="false" name="ativo"  [(ngModel)]="medico.ativo" >
         <strong> Nao </strong>
 		
 	</div>
