@@ -1,9 +1,9 @@
 # cadastro-medico-app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
+Este projeto foi gerado com CLI angular versão 1.6.0.
 
-## Development server
+## Servidor de desenvolvimento
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-
+ Navegue até http://localhost:4200/. 
+#Tecnologias
+bootstrap - 4.0.0-beta.3, npm -5.5.1, angular/cli -1.6.0
