@@ -10,7 +10,7 @@ export class ConfigService {
  private parametroUrl: any;
 
   constructor(private rotas: Router , private rotaAtiva: ActivatedRoute ) {
-    this.urlService = 'http://localhost:4300';
+    this.urlService = 'http://localhost:4400';
   }
 
 

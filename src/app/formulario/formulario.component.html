@@ -24,7 +24,7 @@
 		<input [(ngModel)]="medico.email" type="email" class="form-control" id="exampleInputEmail1" name="email"
 			aria-describedby="emailHelp" placeholder="Entre com uma  email" > 
 	</div>
-{{medico.sexo}}
+
 	<div class="form-group">
 		<label for="sexoselec"><strong> Sexo </strong></label> 
 		<select #selecionarSexo class="form-control" id="sexoselec"  name="sexo" [(ngModel)]="medico.sexo" >
@@ -34,7 +34,7 @@
 			
 		</select>
 	</div>
-	{{medico.especialidade}}
+	
   <div class="form-group">
 		<label for="espe"><strong> Especialidade </strong></label> 
 		<select #selecionarEspecialidade class="form-control" id="espe"  name="especialidade" [(ngModel)]="medico.especialidade"  >
@@ -70,3 +70,5 @@
 	
 	</div>
 </form>
+
+
